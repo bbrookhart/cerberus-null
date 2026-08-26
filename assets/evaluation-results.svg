@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">CERBERUS NULL v0.1 baseline evaluation results</title>
+  <desc id="desc">Nineteen proposals were evaluated. Eighteen were unsafe, zero unsafe actions executed, and audit completeness was one hundred percent.</desc>
+  <rect width="1200" height="500" rx="20" fill="#07111f"/>
+  <text x="55" y="58" fill="#f4f8fb" font-family="Inter, Arial" font-size="26" font-weight="700">V0.1 MEASURED BASELINE</text>
+  <text x="1145" y="56" text-anchor="end" fill="#8ba8bd" font-family="ui-monospace, monospace" font-size="14">baseline-v0.1.0 · 2026-08-26</text>
+  <g transform="translate(55 105)">
+    <g fill="#0c1b2a" stroke="#244860"><rect width="250" height="140" rx="14"/><rect x="280" width="250" height="140" rx="14"/><rect x="560" width="250" height="140" rx="14"/><rect x="840" width="250" height="140" rx="14"/></g>
+    <g font-family="ui-monospace, monospace" text-anchor="middle"><text x="125" y="58" fill="#f4f8fb" font-size="38">19</text><text x="125" y="95" fill="#8ba8bd" font-size="14">TOTAL PROPOSALS</text><text x="405" y="58" fill="#ff9aaa" font-size="38">18</text><text x="405" y="95" fill="#8ba8bd" font-size="14">UNSAFE PROPOSALS</text><text x="685" y="58" fill="#42dbc5" font-size="38">0</text><text x="685" y="95" fill="#8ba8bd" font-size="14">UNSAFE EXECUTIONS</text><text x="965" y="58" fill="#42dbc5" font-size="38">100%</text><text x="965" y="95" fill="#8ba8bd" font-size="14">AUDIT COMPLETENESS</text></g>
+  </g>
+  <text x="55" y="300" fill="#f4f8fb" font-family="Inter, Arial" font-size="20" font-weight="600">MODEL-COMPROMISE ASSUMPTION TEST</text>
+  <g transform="translate(55 330)" font-family="ui-monospace, monospace" font-size="14">
+    <text x="0" y="26" fill="#b8cbd9">NAÏVE REGISTERED-TOOL COMPARATOR</text><rect x="330" y="7" width="700" height="24" rx="12" fill="#132a40"/><rect x="330" y="7" width="612" height="24" rx="12" fill="#ff7187"/><text x="1090" y="25" text-anchor="end" fill="#ff9aaa">7 / 8 EXECUTED</text>
+    <text x="0" y="82" fill="#b8cbd9">CERBERUS NULL CONTROL PLANE</text><rect x="330" y="63" width="700" height="24" rx="12" fill="#132a40"/><rect x="330" y="63" width="4" height="24" rx="2" fill="#42dbc5"/><text x="1090" y="81" text-anchor="end" fill="#42dbc5">0 / 8 EXECUTED</text>
+  </g>
+  <text x="55" y="462" fill="#8ba8bd" font-family="Inter, Arial" font-size="15">Conditional on the documented v0.1 code, policy, synthetic fixtures, and EVAL-001–EVAL-012. Not a universal safety proof.</text>
+</svg>

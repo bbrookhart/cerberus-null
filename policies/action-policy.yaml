@@ -1,0 +1,26 @@
+schema_version: "1.0"
+default_decision: NULL
+decisions: [ALLOW, DENY, REQUIRE_APPROVAL, NULL]
+rules:
+  - id: POL-UNKNOWN
+    when: action_not_registered
+    decision: NULL
+  - id: POL-T4
+    when: action_tier_equals_T4
+    decision: NULL
+  - id: POL-STOP
+    when: emergency_stop_and_tier_above_T0
+    decision: NULL
+  - id: POL-PROVENANCE
+    when: tier_at_least_T2_and_provenance_unknown
+    decision: NULL
+  - id: POL-CAPABILITY
+    when: capability_invalid_or_out_of_scope
+    decision: DENY
+  - id: POL-APPROVAL
+    when: approval_required_and_absent
+    decision: REQUIRE_APPROVAL
+  - id: POL-ALLOW
+    when: all_mandatory_checks_pass
+    decision: ALLOW
+implementation: cerberus_null/policy.py

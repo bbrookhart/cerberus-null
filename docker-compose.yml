@@ -1,0 +1,31 @@
+services:
+  control-plane:
+    build:
+      context: .
+    command: ["serve", "--port", "8080"]
+    environment:
+      CERBERUS_BIND_HOST: "0.0.0.0"
+    ports:
+      - "127.0.0.1:8080:8080"
+    networks:
+      - isolated
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,noexec,nosuid,nodev
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 1.0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+networks:
+  isolated:
+    internal: true

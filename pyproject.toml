@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cerberus-null"
+version = "0.1.0"
+description = "Assured-autonomy control plane and TEVV range for high-consequence AI agents"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+dependencies = [
+  "pydantic>=2.11,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "bandit>=1.8,<2",
+  "cyclonedx-bom>=6,<8",
+  "hypothesis>=6.130,<7",
+  "mypy>=1.15,<2",
+  "pip-audit>=2.8,<3",
+  "pytest>=9.0.3,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.11,<1",
+]
+
+[project.scripts]
+cerberus = "cerberus_null.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cerberus_null"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --strict-config"
+testpaths = ["tests"]
+markers = [
+  "adversarial: synthetic adversarial evaluation regression",
+  "architecture: trusted-boundary architecture tests",
+  "property: property-based security invariant tests",
+  "integration: multi-component integration tests",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["cerberus_null"]
+omit = ["cerberus_null/cli.py", "cerberus_null/__main__.py"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "SIM", "RUF"]
+ignore = ["S101"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+
+[tool.bandit]
+exclude_dirs = ["tests"]

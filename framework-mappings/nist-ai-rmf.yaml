@@ -1,0 +1,23 @@
+schema_version: "1.0"
+framework:
+  name: NIST AI Risk Management Framework 1.0
+  retrieved: "2026-08-26"
+  source: https://www.nist.gov/itl/ai-risk-management-framework
+mappings:
+  GOVERN:
+    evidence: [threat_model, ADRs, security_policy, research_integrity]
+    status: PARTIALLY_EVALUATED
+  MAP:
+    evidence: [trust_boundaries, action_taxonomy, consequence_model, attack_control_matrix]
+    status: EVALUATED
+  MEASURE:
+    evidence: [EVAL-001..EVAL-012, unsafe_action_escape_rate, latency, audit_completeness]
+    status: EVALUATED
+  MANAGE:
+    evidence: [capability_limits, human_approval, emergency_stop, graceful_degradation]
+    status: PARTIALLY_EVALUATED
+critical_infrastructure_profile:
+  status: ONGOING_NIST_WORK
+  source: https://www.nist.gov/programs-projects/concept-note-ai-rmf-profile-trustworthy-ai-critical-infrastructure
+  note: The profile was ongoing when retrieved and is not treated as finalized guidance.
+claim: This mapping organizes research evidence; it is not NIST certification or compliance.

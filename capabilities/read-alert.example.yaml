@@ -1,0 +1,12 @@
+schema_version: "1.0"
+capability:
+  issuer: human-operator-01
+  subject: agent-investigator-01
+  action: read_alert
+  resources: [siem-alert-*]
+  mission: MISSION-001
+  valid_for_seconds: 300
+  max_uses: 1
+  requires_approval: false
+  delegable: false
+note: Example input only. Runtime artifacts are signed; this file grants no authority.

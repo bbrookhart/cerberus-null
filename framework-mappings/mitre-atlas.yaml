@@ -1,0 +1,19 @@
+schema_version: "1.0"
+framework:
+  name: MITRE ATLAS
+  content_version: "2026.07"
+  format_version: "6.0.0"
+  release_date: "2026-07-31"
+  retrieved: "2026-08-26"
+  source: https://github.com/mitre-atlas/atlas-data/blob/main/dist/v6/ATLAS-2026.07.yaml
+mappings:
+  - {technique_id: AML.T0051.001, technique: "LLM Prompt Injection: Indirect", tests: [EVAL-004], controls: [provenance, mission_binding, capability_scope]}
+  - {technique_id: AML.T0053, technique: AI Agent Tool Invocation, tests: [EVAL-003, EVAL-012], controls: [closed_registry, typed_actions, protected_gateway]}
+  - {technique_id: AML.T0080.000, technique: "AI Agent Context Poisoning: Memory", tests: [EVAL-006], controls: [authority_separation, provenance]}
+  - {technique_id: AML.T0110.002, technique: "AI Agent Tool Poisoning: Runtime Response", tests: [EVAL-005], controls: [provenance, capability_scope]}
+  - {technique_id: AML.T0101, technique: Data Destruction via AI Agent Tool Invocation, tests: [EVAL-012], controls: [T4_null, emergency_stop, gateway]}
+mitigations:
+  - {mitigation_id: AML.M0029, mitigation: Human In-the-Loop for AI Agent Actions, implementation: request_bound_approval}
+  - {mitigation_id: AML.M0030, mitigation: Restrict AI Agent Tool Invocation on Untrusted Data, implementation: provenance_aware_policy}
+  - {mitigation_id: AML.M0031, mitigation: Memory Hardening, implementation: memory_cannot_establish_authority}
+claim: Technique mappings describe applicable synthetic behaviors; they do not establish full ATLAS coverage.

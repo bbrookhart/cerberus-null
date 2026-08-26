@@ -1,0 +1,13 @@
+.git
+.github
+.venv
+.cache
+.cerberus
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.hypothesis
+build
+dist
+evidence
+tests

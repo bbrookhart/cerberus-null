@@ -1,0 +1,38 @@
+schema_version: "1.0"
+matrix:
+  - threat: indirect_prompt_injection
+    agent_behavior: unauthorized_T3_proposal
+    boundary: policy_decision_point
+    controls: [mission_binding, capability_scope, provenance]
+    test: EVAL-004
+    evidence: decisions.jsonl
+  - threat: tool_output_injection
+    agent_behavior: unauthorized_T2_proposal
+    boundary: capability_broker
+    controls: [provenance, signed_capability]
+    test: EVAL-005
+    evidence: [provenance.jsonl, decisions.jsonl]
+  - threat: memory_poisoning
+    agent_behavior: false_approval_belief
+    boundary: approval_verifier
+    controls: [authority_separation, request_bound_approval]
+    test: EVAL-006
+    evidence: decisions.jsonl
+  - threat: privilege_escalation
+    agent_behavior: out_of_scope_action
+    boundary: capability_broker
+    controls: [non_delegable_capability, deny_default]
+    test: EVAL-003
+    evidence: decisions.jsonl
+  - threat: capability_tampering
+    agent_behavior: broaden_resource_scope
+    boundary: capability_broker
+    controls: [canonical_signature, issued_grant_comparison]
+    test: EVAL-008
+    evidence: decisions.jsonl
+  - threat: hostile_planner
+    agent_behavior: systematic_forbidden_requests
+    boundary: execution_gateway
+    controls: [complete_mediation, T4_null, closed_registry]
+    test: EVAL-012
+    evidence: [proposals.jsonl, decisions.jsonl, execution.jsonl]

@@ -1,0 +1,19 @@
+schema_version: "1.0"
+framework:
+  name: OWASP Top 10 for Agentic Applications 2026
+  published: "2025-12-09"
+  retrieved: "2026-08-26"
+  source: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+status_vocabulary: [NOT_EVALUATED, PARTIALLY_EVALUATED, EVALUATED, OUT_OF_SCOPE]
+mappings:
+  - {id: ASI01, risk: Agent Goal Hijack, status: EVALUATED, tests: [EVAL-004, EVAL-012], controls: [mission_binding, capability_scope, deterministic_policy]}
+  - {id: ASI02, risk: Tool Misuse & Exploitation, status: EVALUATED, tests: [EVAL-003, EVAL-005, EVAL-012], controls: [typed_actions, capability_scope, gateway]}
+  - {id: ASI03, risk: Identity & Privilege Abuse, status: EVALUATED, tests: [EVAL-003, EVAL-007, EVAL-008], controls: [identity_resolution, signed_capabilities, request_bound_approval]}
+  - {id: ASI04, risk: Agentic Supply Chain Vulnerabilities, status: PARTIALLY_EVALUATED, tests: [EVAL-002, EVAL-005], controls: [closed_registry, unknown_tool_null]}
+  - {id: ASI05, risk: Unexpected Code Execution, status: PARTIALLY_EVALUATED, tests: [EVAL-002, EVAL-012], controls: [no_shell_adapter, protected_gateway]}
+  - {id: ASI06, risk: Memory & Context Poisoning, status: EVALUATED, tests: [EVAL-006], controls: [provenance, authority_separation]}
+  - {id: ASI07, risk: Insecure Inter-Agent Communication, status: NOT_EVALUATED, tests: [], controls: []}
+  - {id: ASI08, risk: Cascading Failures, status: PARTIALLY_EVALUATED, tests: [EVAL-009, EVAL-012], controls: [blast_radius, emergency_stop]}
+  - {id: ASI09, risk: Human-Agent Trust Exploitation, status: PARTIALLY_EVALUATED, tests: [EVAL-007], controls: [exact_request_approval]}
+  - {id: ASI10, risk: Rogue Agents, status: EVALUATED, tests: [EVAL-012], controls: [compromised_planner_assumption, deterministic_kernel]}
+claim: Mapping communicates tested coverage only; it is not an OWASP certification or a claim of complete mitigation.

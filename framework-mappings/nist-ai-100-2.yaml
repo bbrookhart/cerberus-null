@@ -1,0 +1,11 @@
+schema_version: "1.0"
+source:
+  title: "NIST AI 100-2e2025: Adversarial Machine Learning—A Taxonomy and Terminology of Attacks and Mitigations"
+  status: final
+  retrieved: "2026-08-26"
+  url: https://csrc.nist.gov/pubs/ai/100/2/e2025/final
+scope_note: CERBERUS NULL uses NIST AML language for model-level attacks but evaluates a broader agent-system authority boundary.
+distinctions:
+  model_level: [prompt_injection_effect_on_model, poisoned_context_effect_on_proposal]
+  system_level: [authorization_decision, execution_escape, observed_consequence]
+tests: [EVAL-004, EVAL-005, EVAL-006, EVAL-012]

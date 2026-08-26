@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">Authority decision boundary</title>
+  <desc id="desc">A typed proposal passes independent checks and reaches execution only after an allow decision.</desc>
+  <rect width="1200" height="430" rx="20" fill="#07111f"/>
+  <text x="55" y="58" fill="#f4f8fb" font-family="Inter, Arial" font-size="26" font-weight="700">COMPLETE MEDIATION</text>
+  <g transform="translate(55 125)" font-family="ui-monospace, monospace" font-size="13" text-anchor="middle">
+    <rect width="150" height="80" rx="10" fill="#132a40" stroke="#62a5ff"/><text x="75" y="35" fill="#f4f8fb">ACTION</text><text x="75" y="56" fill="#8ba8bd">ENVELOPE</text>
+    <path d="M150 40H205" stroke="#62a5ff" stroke-width="2"/>
+    <g fill="#102d35" stroke="#42dbc5"><rect x="205" width="130" height="80" rx="10"/><rect x="365" width="130" height="80" rx="10"/><rect x="525" width="130" height="80" rx="10"/><rect x="685" width="130" height="80" rx="10"/></g>
+    <g fill="#e8f5f3"><text x="270" y="35">IDENTITY</text><text x="270" y="56">MISSION</text><text x="430" y="35">CAPABILITY</text><text x="430" y="56">SCOPE</text><text x="590" y="35">POLICY</text><text x="590" y="56">SAFETY</text><text x="750" y="35">APPROVAL</text><text x="750" y="56">EVIDENCE</text></g>
+    <path d="M335 40H365M495 40H525M655 40H685M815 40H870" stroke="#42dbc5" stroke-width="2"/>
+    <rect x="870" width="210" height="80" rx="10" fill="#102d35" stroke="#f4f8fb"/><text x="975" y="35" fill="#f4f8fb">EXECUTION</text><text x="975" y="56" fill="#8ba8bd">GATEWAY</text>
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="14">
+    <path d="M645 205V300" stroke="#ff7187" stroke-width="2"/><path d="M645 300H1015" stroke="#ff7187" stroke-width="2"/>
+    <circle cx="645" cy="300" r="5" fill="#ff7187"/><text x="665" y="290" fill="#ff9aaa">DENY / NULL / APPROVAL</text><text x="665" y="318" fill="#8ba8bd">NO EXECUTABLE PATH</text>
+    <text x="935" y="95" fill="#42dbc5">ALLOW ONLY →</text>
+  </g>
+  <text x="55" y="390" fill="#b8cbd9" font-family="Inter, Arial" font-size="18">Natural language may propose. It cannot mint identity, capability, approval, or policy state.</text>
+</svg>

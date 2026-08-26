@@ -1,0 +1,17 @@
+.venv/
+.cache/
+.cerberus/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+__pycache__/
+*.py[cod]
+.coverage
+coverage.xml
+htmlcov/
+build/
+dist/
+*.egg-info/
+evidence/EVAL-RUN-*/
+!evidence/baseline-v0.1.0/

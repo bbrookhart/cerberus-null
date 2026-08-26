@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
+  <title id="title">Attack to consequence measurement</title>
+  <desc id="desc">The evaluation records model influence, proposal, authorization, execution, and consequence as separate stages.</desc>
+  <rect width="1200" height="480" rx="20" fill="#07111f"/>
+  <text x="55" y="58" fill="#f4f8fb" font-family="Inter, Arial" font-size="26" font-weight="700">DO NOT COLLAPSE MODEL FAILURE INTO SYSTEM FAILURE</text>
+  <g transform="translate(55 135)" font-family="ui-monospace, monospace" text-anchor="middle">
+    <g fill="#122a3e" stroke="#62a5ff"><rect width="180" height="90" rx="12"/><rect x="220" width="180" height="90" rx="12"/></g>
+    <g fill="#102d35" stroke="#42dbc5"><rect x="440" width="180" height="90" rx="12"/><rect x="660" width="180" height="90" rx="12"/><rect x="880" width="180" height="90" rx="12"/></g>
+    <g fill="#f4f8fb" font-size="15"><text x="90" y="38">INJECTION</text><text x="90" y="62">FOLLOWED?</text><text x="310" y="38">UNSAFE ACTION</text><text x="310" y="62">PROPOSED?</text><text x="530" y="38">AUTHORIZED?</text><text x="530" y="62">ALLOW / NULL</text><text x="750" y="38">EXECUTED?</text><text x="750" y="62">GATEWAY</text><text x="970" y="38">CONSEQUENCE</text><text x="970" y="62">B0–B5</text></g>
+    <g stroke="#5f7d90" stroke-width="2"><path d="M180 45H220"/><path d="M400 45H440"/><path d="M620 45H660"/><path d="M840 45H880"/></g>
+  </g>
+  <path d="M505 290V360H1025V225" fill="none" stroke="#ff7187" stroke-width="2" stroke-dasharray="7 7"/>
+  <text x="765" y="340" text-anchor="middle" fill="#ff9aaa" font-family="ui-monospace, monospace" font-size="13">CERBERUS NULL TARGET: UNSAFE PROPOSAL MAY OCCUR; UNSAFE EXECUTION MUST NOT</text>
+  <g font-family="Inter, Arial" font-size="16"><text x="55" y="420" fill="#b8cbd9">Each stage is recorded independently in the evidence chain.</text><text x="1145" y="420" text-anchor="end" fill="#42dbc5">PROPOSAL ≠ AUTHORITY ≠ CONSEQUENCE</text></g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">Capability grant structure</title>
+  <desc id="desc">A human issuer creates a signed capability with narrow scope, validity, and use constraints.</desc>
+  <rect width="1200" height="430" rx="20" fill="#07111f"/>
+  <text x="55" y="58" fill="#f4f8fb" font-family="Inter, Arial" font-size="26" font-weight="700">AUTHORITY IS EXPLICIT, SCOPED, AND CONSUMABLE</text>
+  <rect x="55" y="110" width="220" height="220" rx="16" fill="#0c1b2a" stroke="#62a5ff"/>
+  <text x="165" y="155" text-anchor="middle" fill="#62a5ff" font-family="ui-monospace, monospace" font-size="14">HUMAN ISSUER</text>
+  <circle cx="165" cy="220" r="38" fill="#132a40" stroke="#62a5ff"/><path d="M145 220h40M165 200v40" stroke="#f4f8fb" stroke-width="3"/>
+  <text x="165" y="294" text-anchor="middle" fill="#b8cbd9" font-family="Inter, Arial" font-size="15">cannot delegate to model</text>
+  <path d="M275 220H370" stroke="#42dbc5" stroke-width="3"/><path d="m358 210 15 10-15 10" fill="none" stroke="#42dbc5" stroke-width="3"/>
+  <rect x="385" y="92" width="460" height="270" rx="16" fill="#0a2027" stroke="#42dbc5" stroke-width="2"/>
+  <text x="615" y="132" text-anchor="middle" fill="#42dbc5" font-family="ui-monospace, monospace" font-size="14">SIGNED CAPABILITY</text>
+  <g fill="#e8f5f3" font-family="ui-monospace, monospace" font-size="15">
+    <text x="430" y="175">subject</text><text x="615" y="175">action</text><text x="750" y="175">mission</text>
+    <text x="430" y="220">resource scope</text><text x="615" y="220">parameter scope</text>
+    <text x="430" y="265">validity window</text><text x="615" y="265">max uses</text><text x="750" y="265">approval</text>
+    <text x="430" y="310">revocable</text><text x="615" y="310">non-delegable</text>
+  </g>
+  <path d="M845 220H930" stroke="#42dbc5" stroke-width="3"/><path d="m918 210 15 10-15 10" fill="none" stroke="#42dbc5" stroke-width="3"/>
+  <rect x="945" y="125" width="200" height="190" rx="16" fill="#0c1b2a" stroke="#f4f8fb"/>
+  <text x="1045" y="170" text-anchor="middle" fill="#8ba8bd" font-family="ui-monospace, monospace" font-size="14">VALIDATE</text>
+  <text x="1045" y="215" text-anchor="middle" fill="#f4f8fb" font-family="Inter, Arial" font-size="17">match + signature</text>
+  <text x="1045" y="250" text-anchor="middle" fill="#f4f8fb" font-family="Inter, Arial" font-size="17">time + scope</text>
+  <text x="1045" y="285" text-anchor="middle" fill="#42dbc5" font-family="ui-monospace, monospace" font-size="15">CONSUME ON EXECUTE</text>
+</svg>

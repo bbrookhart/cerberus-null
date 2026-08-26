@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+  <title id="title">CERBERUS NULL</title>
+  <desc id="desc">An untrusted AI proposal crosses three deterministic enforcement gates before reaching protected synthetic systems.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/><stop offset="1" stop-color="#10273a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#62a5ff"/><stop offset="1" stop-color="#42dbc5"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect width="1400" height="520" rx="24" fill="url(#bg)"/>
+  <circle cx="1120" cy="100" r="170" fill="#42dbc5" opacity=".05" filter="url(#soft)"/>
+  <g fill="none" stroke="#17354c" opacity=".8">
+    <path d="M0 410H1400M0 450H1400M0 490H1400"/>
+    <path d="M80 0V520M160 0V520M1240 0V520M1320 0V520"/>
+  </g>
+  <text x="88" y="112" fill="#8ba8bd" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="5">ASSURED AUTONOMY / TEVV RANGE</text>
+  <text x="84" y="202" fill="#f4f8fb" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="700" letter-spacing="4">CERBERUS NULL</text>
+  <text x="88" y="252" fill="#b8cbd9" font-family="Inter, Arial, sans-serif" font-size="24">High-consequence agents. Independently bounded authority.</text>
+  <g transform="translate(88 320)">
+    <circle cx="36" cy="36" r="34" fill="#10273a" stroke="#62a5ff" stroke-width="2"/>
+    <circle cx="36" cy="36" r="10" fill="#62a5ff"/>
+    <path d="M70 36H222" stroke="url(#line)" stroke-width="3"/>
+    <g fill="#0c1d2c" stroke="#42dbc5" stroke-width="2">
+      <path d="M222 6h42l16 30-16 30h-42l-16-30z"/>
+      <path d="M292 6h42l16 30-16 30h-42l-16-30z"/>
+      <path d="M362 6h42l16 30-16 30h-42l-16-30z"/>
+    </g>
+    <path d="M420 36H572" stroke="url(#line)" stroke-width="3"/>
+    <rect x="572" y="5" width="182" height="62" rx="10" fill="#0c1d2c" stroke="#f4f8fb" stroke-width="2"/>
+    <text x="663" y="43" text-anchor="middle" fill="#f4f8fb" font-family="ui-monospace, monospace" font-size="15">PROTECTED SYSTEM</text>
+    <text x="36" y="94" text-anchor="middle" fill="#8ba8bd" font-family="ui-monospace, monospace" font-size="13">UNTRUSTED AI</text>
+    <text x="313" y="94" text-anchor="middle" fill="#42dbc5" font-family="ui-monospace, monospace" font-size="13">IDENTITY · CAPABILITY · POLICY</text>
+  </g>
+  <g transform="translate(940 308)">
+    <rect width="366" height="112" rx="14" fill="#0a1826" stroke="#244860"/>
+    <text x="28" y="38" fill="#42dbc5" font-family="ui-monospace, monospace" font-size="15">DECISION SPACE</text>
+    <text x="28" y="78" fill="#f4f8fb" font-family="ui-monospace, monospace" font-size="20">ALLOW  DENY  APPROVAL  NULL</text>
+  </g>
+  <text x="88" y="482" fill="#f4f8fb" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600">REASON PROBABILISTICALLY. ACT DETERMINISTICALLY.</text>
+</svg>

@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use this research artifact, cite the repository and release.
+title: "CERBERUS NULL: An Assured-Autonomy Control Plane and TEVV Range for High-Consequence AI Agents"
+type: software
+authors:
+  - name: CERBERUS NULL contributors
+version: 0.1.0
+date-released: 2026-08-26
+repository-code: "https://github.com/bbrookhart/cerberus-null"
+license: MIT
+keywords:
+  - agentic AI security
+  - assured autonomy
+  - TEVV
+  - capability security
+  - high-consequence systems

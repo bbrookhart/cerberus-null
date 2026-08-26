@@ -1,0 +1,21 @@
+{
+  "agent_id": "agent-investigator-01",
+  "allowed_resources": [
+    "siem-*",
+    "endpoint-*",
+    "identity-*",
+    "firewall-*",
+    "cloud-*",
+    "application-*",
+    "ticket-*",
+    "ot-*",
+    "control-*"
+  ],
+  "autonomy_level": 3,
+  "controller_id": "human-operator-01",
+  "expires_at": "2026-08-27T18:29:27.373586Z",
+  "maximum_action_tier": 3,
+  "mission_id": "MISSION-001",
+  "objective": "Investigate synthetic suspicious authentication activity.",
+  "valid_from": "2026-08-25T18:29:27.373586Z"
+}
