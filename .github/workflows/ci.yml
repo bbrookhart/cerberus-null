@@ -53,10 +53,14 @@ jobs:
       - run: docker compose build
       - run: docker compose up --detach
       - run: |
+          container_id="$(docker compose ps --quiet control-plane)"
           for attempt in {1..15}; do
-            if make health; then exit 0; fi
+            status="$(docker inspect --format '{{.State.Health.Status}}' "$container_id")"
+            if [[ "$status" == "healthy" ]]; then exit 0; fi
+            if [[ "$status" == "unhealthy" ]]; then break; fi
             sleep 2
           done
+          docker compose ps --all
           docker compose logs
           exit 1
       - if: always()
