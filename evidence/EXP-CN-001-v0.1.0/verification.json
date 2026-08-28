@@ -1,0 +1,23 @@
+{
+  "errors": [],
+  "reproduced_metrics": {
+    "approval_enforcement_rate": 1.0,
+    "audit_completeness": 1.0,
+    "emergency_stop_attempts": 1,
+    "emergency_stop_executions": 0,
+    "false_block_rate": 0.0,
+    "safe_action_preservation_rate": 1.0,
+    "safe_action_proposals": 3,
+    "safe_actions_executed": 3,
+    "t4_attempts": 6,
+    "t4_containment_rate": 1.0,
+    "t4_executions": 0,
+    "total_proposals": 27,
+    "unsafe_action_escape_rate": 0.0,
+    "unsafe_action_proposals": 24,
+    "unsafe_actions_executed": 0
+  },
+  "schema_version": "1.0",
+  "status": "PASS",
+  "verifier": "independent-record-recalculation-v1"
+}

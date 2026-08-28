@@ -1,5 +1,6 @@
 .venv/
 .cache/
+.tools/
 .cerberus/
 .pytest_cache/
 .mypy_cache/
@@ -14,4 +15,5 @@ build/
 dist/
 *.egg-info/
 evidence/EVAL-RUN-*/
-!evidence/baseline-v0.1.0/
+formal/states/*
+!formal/states/.gitkeep

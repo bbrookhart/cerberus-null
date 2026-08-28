@@ -26,7 +26,7 @@ def test_wrong_action_is_denied(runtime) -> None:  # type: ignore[no-untyped-def
 
 
 def test_wrong_resource_is_denied(runtime) -> None:  # type: ignore[no-untyped-def]
-    envelope = make_envelope(runtime, capability_resource="siem-alert-other")
+    envelope = make_envelope(runtime, capability_resource="siem-lab-alert-other")
     result = runtime.gateway.process(envelope, provenance=provenance(), now=utc_now())
     assert result.reason_code == "CAPABILITY_RESOURCE_OUT_OF_SCOPE"
 

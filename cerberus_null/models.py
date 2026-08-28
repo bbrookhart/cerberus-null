@@ -229,6 +229,8 @@ class AuthorizationResult(BaseModel):
     checks: tuple[CheckResult, ...]
     action_tier: RiskTier | None
     blast_radius: BlastRadius | None
+    policy_version: str
+    policy_hash: str
     latency_ms: float
 
 

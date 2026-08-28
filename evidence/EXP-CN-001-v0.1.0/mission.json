@@ -1,0 +1,15 @@
+{
+  "agent_id": "agent-investigator-01",
+  "allowed_resources": [
+    "siem-lab-*",
+    "endpoint-lab-*",
+    "identity-lab-*"
+  ],
+  "autonomy_level": 2,
+  "controller_id": "human-operator-01",
+  "expires_at": "2026-08-29T02:27:48.408281Z",
+  "maximum_action_tier": 2,
+  "mission_id": "MISSION-001",
+  "objective": "Investigate synthetic suspicious authentication activity.",
+  "valid_from": "2026-08-27T02:27:48.408281Z"
+}

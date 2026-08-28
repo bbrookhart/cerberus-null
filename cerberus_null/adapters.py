@@ -12,7 +12,7 @@ _GATEWAY_PERMIT = object()
 class MockEnvironment:
     def __init__(self) -> None:
         self.resources: dict[str, dict[str, Any]] = {
-            "siem-alert-001": {"status": "open", "severity": "medium"},
+            "siem-lab-alert-001": {"status": "open", "severity": "medium"},
             "endpoint-lab-001": {"isolated": False, "healthy": True},
             "identity-lab-alice": {"disabled": False, "role": "analyst"},
             "firewall-lab-edge": {"rules": []},

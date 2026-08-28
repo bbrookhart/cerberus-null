@@ -47,7 +47,7 @@ source = ["cerberus_null"]
 omit = ["cerberus_null/cli.py", "cerberus_null/__main__.py"]
 
 [tool.coverage.report]
-fail_under = 85
+fail_under = 90
 show_missing = true
 skip_covered = true
 

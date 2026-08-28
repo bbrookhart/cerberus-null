@@ -41,8 +41,14 @@ class ArtifactSigner:
 
 
 class CapabilityBroker:
-    def __init__(self, signer: ArtifactSigner) -> None:
+    def __init__(
+        self,
+        signer: ArtifactSigner,
+        *,
+        authorized_issuers: frozenset[str] = frozenset({"human-operator-01"}),
+    ) -> None:
         self._signer = signer
+        self._authorized_issuers = authorized_issuers
         self._grants: dict[str, CapabilityGrant] = {}
         self._uses: dict[str, int] = {}
         self._revoked: set[str] = set()
@@ -61,6 +67,8 @@ class CapabilityBroker:
         parameter_constraints: dict[str, tuple[Any, ...]] | None = None,
         now: datetime | None = None,
     ) -> CapabilityGrant:
+        if issuer_id not in self._authorized_issuers:
+            raise PermissionError("capability issuer is not independently authorized")
         issued = now or utc_now()
         payload: dict[str, Any] = {
             "capability_id": f"CAP-{uuid.uuid4().hex[:16]}",

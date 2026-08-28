@@ -1,4 +1,6 @@
 schema_version: "1.0"
+policy_version: cerberus-null-policy-v0.1.0
+policy_hash: fe349631650686d03c2edfa9c5750bbe735c27762daefe72ff8d86a0ec04fade
 default_decision: NULL
 decisions: [ALLOW, DENY, REQUIRE_APPROVAL, NULL]
 rules:

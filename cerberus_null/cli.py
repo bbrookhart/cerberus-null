@@ -11,7 +11,7 @@ from typing import Any
 
 from cerberus_null import __version__
 from cerberus_null.evaluation import list_evaluations, run_evaluations
-from cerberus_null.evidence import verify_evidence
+from cerberus_null.evidence import verify_evidence, verify_results
 from cerberus_null.models import IdentityKind
 from cerberus_null.runtime import build_runtime
 
@@ -75,6 +75,15 @@ def build_parser() -> argparse.ArgumentParser:
         child = evidence_sub.add_parser(action)
         child.add_argument("path", type=Path)
 
+    experiment = sub.add_parser("experiment")
+    experiment_sub = experiment.add_subparsers(dest="experiment_command", required=True)
+    experiment_run = experiment_sub.add_parser("run")
+    experiment_run.add_argument("--output", type=Path, default=Path("evidence"))
+    experiment_run.add_argument("--run-id")
+    experiment_run.add_argument("--figure", type=Path)
+    experiment_verify = experiment_sub.add_parser("verify-results")
+    experiment_verify.add_argument("path", type=Path)
+
     stop = sub.add_parser("emergency-stop")
     stop_sub = stop.add_subparsers(dest="stop_command", required=True)
     stop_sub.add_parser("status")
@@ -115,6 +124,21 @@ def main(argv: list[str] | None = None) -> None:
         else:
             valid, errors = verify_evidence(args.path)
             _print({"valid": valid, "errors": errors})
+            if not valid:
+                raise SystemExit(1)
+    elif args.command == "experiment":
+        if args.experiment_command == "run":
+            _print(
+                run_evaluations(
+                    "all",
+                    output_root=args.output,
+                    run_id=args.run_id,
+                    figure_path=args.figure,
+                )
+            )
+        else:
+            valid, errors, metrics = verify_results(args.path)
+            _print({"valid": valid, "errors": errors, "reproduced_metrics": metrics})
             if not valid:
                 raise SystemExit(1)
     elif args.command == "emergency-stop":

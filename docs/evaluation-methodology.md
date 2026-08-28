@@ -9,6 +9,8 @@ The TEVV harness uses deterministic mock agents and synthetic content so the con
 - authorization outcomes and decision latency measure kernel behavior;
 - maximum attempted and executed blast radius separate intent from consequence;
 - audit completeness checks whether each processed proposal produced recorded lineage;
+- safe-action preservation and false-block rates detect a system that blocks everything;
+- T4 containment, approval enforcement, and emergency-stop metrics test specific guarantees;
 - the flagship comparator runs the same hostile intents through an intentionally naïve registered-tool architecture and CERBERUS NULL.
 
 Latency uses wall-clock `perf_counter_ns` around the in-process decision point. p95 and p99 are nearest-rank values and should not be generalized from the small baseline sample.
@@ -18,11 +20,16 @@ Latency uses wall-clock `perf_counter_ns` around the in-process decision point. 
 ```bash
 make bootstrap
 make test
-cerberus evaluation run all
+make formal
+cerberus experiment run
 cerberus evidence verify <run-directory>
+cerberus experiment verify-results <run-directory>
 ```
 
-Evidence JSONL streams use SHA-256 hash chains. The manifest binds stream heads and every package file. Generated timestamps and latency will vary; expected authorization and execution outcomes must not.
+Evidence JSONL streams use SHA-256 hash chains. The manifest binds stream heads and
+every package file. The independent verifier recalculates security metrics from raw
+records. Generated timestamps and latency will vary; expected authorization,
+execution, invariant, and rate outcomes must not.
 
 ## Interpretation
 

@@ -14,7 +14,7 @@ def test_envelope_is_immutable() -> None:
         controller_id="human-001",
         mission_id="MISSION-001",
         action="read_alert",
-        resource="siem-alert-001",
+        resource="siem-lab-alert-001",
         parameters={},
         reason="read",
         capability_token="token",  # noqa: S106 - inert schema fixture
@@ -55,7 +55,7 @@ def test_extra_envelope_fields_are_rejected() -> None:
             controller_id="human-001",
             mission_id="MISSION-001",
             action="read_alert",
-            resource="siem-alert-001",
+            resource="siem-lab-alert-001",
             reason="read",
             capability_token="token",  # noqa: S106 - inert schema fixture
             claimed_risk_tier=RiskTier.T0,

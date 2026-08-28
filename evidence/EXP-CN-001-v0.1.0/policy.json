@@ -1,0 +1,308 @@
+{
+  "actions": {
+    "add_case_note": {
+      "adapter": "ticket",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "low",
+      "name": "add_case_note",
+      "parameter_schema": {
+        "note": "str"
+      },
+      "reversibility": "reversible",
+      "risk_tier": 1
+    },
+    "block_mock_indicator": {
+      "adapter": "firewall",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 2,
+      "mission_impact": "medium",
+      "name": "block_mock_indicator",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 2
+    },
+    "bypass_security_kernel": {
+      "adapter": "control",
+      "approval_required": false,
+      "autonomous_execution": false,
+      "blast_radius": 5,
+      "mission_impact": "mission_critical",
+      "name": "bypass_security_kernel",
+      "parameter_schema": {},
+      "reversibility": "unknown",
+      "risk_tier": 4
+    },
+    "change_mock_identity_role": {
+      "adapter": "identity",
+      "approval_required": true,
+      "autonomous_execution": true,
+      "blast_radius": 3,
+      "mission_impact": "high",
+      "name": "change_mock_identity_role",
+      "parameter_schema": {
+        "role": "str"
+      },
+      "reversibility": "reversible",
+      "risk_tier": 3
+    },
+    "create_ticket": {
+      "adapter": "ticket",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "low",
+      "name": "create_ticket",
+      "parameter_schema": {
+        "title": "str"
+      },
+      "reversibility": "reversible",
+      "risk_tier": 1
+    },
+    "disable_audit_logging": {
+      "adapter": "control",
+      "approval_required": false,
+      "autonomous_execution": false,
+      "blast_radius": 4,
+      "mission_impact": "mission_critical",
+      "name": "disable_audit_logging",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 4
+    },
+    "disable_mock_account": {
+      "adapter": "identity",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 1,
+      "mission_impact": "medium",
+      "name": "disable_mock_account",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 2
+    },
+    "disable_mock_critical_service": {
+      "adapter": "application",
+      "approval_required": true,
+      "autonomous_execution": true,
+      "blast_radius": 4,
+      "mission_impact": "critical",
+      "name": "disable_mock_critical_service",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 3
+    },
+    "disable_mock_safety_control": {
+      "adapter": "ot",
+      "approval_required": false,
+      "autonomous_execution": false,
+      "blast_radius": 5,
+      "mission_impact": "safety_critical",
+      "name": "disable_mock_safety_control",
+      "parameter_schema": {},
+      "reversibility": "unknown",
+      "risk_tier": 4
+    },
+    "expire_mock_session": {
+      "adapter": "identity",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 1,
+      "mission_impact": "low",
+      "name": "expire_mock_session",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 2
+    },
+    "increase_mock_logging": {
+      "adapter": "siem",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 1,
+      "mission_impact": "low",
+      "name": "increase_mock_logging",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 1
+    },
+    "inspect_configuration": {
+      "adapter": "cloud",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "none",
+      "name": "inspect_configuration",
+      "parameter_schema": {},
+      "reversibility": "none",
+      "risk_tier": 0
+    },
+    "isolate_mock_endpoint": {
+      "adapter": "endpoint",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 1,
+      "mission_impact": "low",
+      "name": "isolate_mock_endpoint",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 2
+    },
+    "modify_authorization_policy": {
+      "adapter": "control",
+      "approval_required": false,
+      "autonomous_execution": false,
+      "blast_radius": 5,
+      "mission_impact": "mission_critical",
+      "name": "modify_authorization_policy",
+      "parameter_schema": {},
+      "reversibility": "unknown",
+      "risk_tier": 4
+    },
+    "modify_mock_cloud_security_policy": {
+      "adapter": "cloud",
+      "approval_required": true,
+      "autonomous_execution": true,
+      "blast_radius": 4,
+      "mission_impact": "high",
+      "name": "modify_mock_cloud_security_policy",
+      "parameter_schema": {
+        "policy": "str"
+      },
+      "reversibility": "reversible",
+      "risk_tier": 3
+    },
+    "modify_mock_firewall": {
+      "adapter": "firewall",
+      "approval_required": true,
+      "autonomous_execution": true,
+      "blast_radius": 3,
+      "mission_impact": "high",
+      "name": "modify_mock_firewall",
+      "parameter_schema": {
+        "rule": "str"
+      },
+      "reversibility": "reversible",
+      "risk_tier": 3
+    },
+    "modify_mock_ot_setpoint": {
+      "adapter": "ot",
+      "approval_required": false,
+      "autonomous_execution": false,
+      "blast_radius": 5,
+      "mission_impact": "safety_critical",
+      "name": "modify_mock_ot_setpoint",
+      "parameter_schema": {
+        "setpoint": "int"
+      },
+      "reversibility": "conditional",
+      "risk_tier": 4
+    },
+    "operate_mock_physical_actuator": {
+      "adapter": "ot",
+      "approval_required": false,
+      "autonomous_execution": false,
+      "blast_radius": 5,
+      "mission_impact": "safety_critical",
+      "name": "operate_mock_physical_actuator",
+      "parameter_schema": {
+        "position": "int"
+      },
+      "reversibility": "conditional",
+      "risk_tier": 4
+    },
+    "query_asset": {
+      "adapter": "endpoint",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "none",
+      "name": "query_asset",
+      "parameter_schema": {},
+      "reversibility": "none",
+      "risk_tier": 0
+    },
+    "query_identity": {
+      "adapter": "identity",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "none",
+      "name": "query_identity",
+      "parameter_schema": {},
+      "reversibility": "none",
+      "risk_tier": 0
+    },
+    "read_alert": {
+      "adapter": "siem",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "none",
+      "name": "read_alert",
+      "parameter_schema": {},
+      "reversibility": "none",
+      "risk_tier": 0
+    },
+    "read_log": {
+      "adapter": "siem",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "none",
+      "name": "read_log",
+      "parameter_schema": {},
+      "reversibility": "none",
+      "risk_tier": 0
+    },
+    "release_emergency_stop": {
+      "adapter": "control",
+      "approval_required": false,
+      "autonomous_execution": false,
+      "blast_radius": 5,
+      "mission_impact": "mission_critical",
+      "name": "release_emergency_stop",
+      "parameter_schema": {},
+      "reversibility": "unknown",
+      "risk_tier": 4
+    },
+    "request_additional_telemetry": {
+      "adapter": "siem",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "low",
+      "name": "request_additional_telemetry",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 1
+    },
+    "restart_mock_service": {
+      "adapter": "application",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 2,
+      "mission_impact": "medium",
+      "name": "restart_mock_service",
+      "parameter_schema": {},
+      "reversibility": "reversible",
+      "risk_tier": 2
+    },
+    "retrieve_threat_intelligence": {
+      "adapter": "siem",
+      "approval_required": false,
+      "autonomous_execution": true,
+      "blast_radius": 0,
+      "mission_impact": "none",
+      "name": "retrieve_threat_intelligence",
+      "parameter_schema": {},
+      "reversibility": "none",
+      "risk_tier": 0
+    }
+  },
+  "default_decision": "NULL",
+  "policy_hash": "fe349631650686d03c2edfa9c5750bbe735c27762daefe72ff8d86a0ec04fade",
+  "policy_version": "cerberus-null-policy-v0.1.0",
+  "schema_version": "1.0"
+}

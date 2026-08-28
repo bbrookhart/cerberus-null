@@ -17,4 +17,6 @@ Authority originates only from independently registered identities, a valid miss
 
 The implemented path is `PROPOSED → EVALUATED → {ALLOW, DENY, REQUIRE_APPROVAL, NULL}`. Only `ALLOW → AUDIT-PRECOMMIT → EXECUTED → AUDIT-RESULT` exists. `DENY → EXECUTED`, `NULL → EXECUTED`, and `REQUIRE_APPROVAL → EXECUTED` are forbidden.
 
-See [ADR-004](adr/ADR-004-capability-model.md) and the [formal roadmap](../formal/README.md).
+See [ADR-004](adr/ADR-004-capability-model.md), the
+[formal specification](../formal/README.md), and the
+[formal-to-implementation map](formal-implementation-map.md).

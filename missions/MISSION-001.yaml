@@ -5,11 +5,9 @@ mission:
   agent: agent-investigator-01
   controller: human-operator-01
   allowed_resources:
-    - siem-*
-    - endpoint-*
-    - identity-*
-    - ticket-*
-  maximum_action_tier: T1
+    - siem-lab-*
+    - endpoint-lab-*
+    - identity-lab-*
+  maximum_action_tier: T2
   autonomy_level: A2
   validity: runtime_fixture
-note: The executable TEVV fixture widens resource visibility and tier ceiling per isolated test.

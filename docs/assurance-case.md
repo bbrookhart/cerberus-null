@@ -1,35 +1,72 @@
-# Assurance case
+# CERBERUS NULL v0.1 assurance case
 
-## Claim C1 — prohibited autonomous actions do not reach a protected adapter
+## CN-C1 — exact authority precedes protected execution
 
-**Argument.** Every registered adapter requires the gateway's private permit; the gateway executes only `ALLOW`; T4, unknown, malformed, unresolved, and stopped requests resolve to non-executable outcomes.
+**Claim.** Under the documented threat model, an agent cannot execute a protected
+operation unless the independent authorization architecture establishes valid
+authority for that exact request.
 
-**Evidence.** Architecture tests in `tests/architecture/test_boundary.py`; property test `test_inv_ot_prohibited_actions_never_execute`; EVAL-002, EVAL-009, EVAL-010, and EVAL-012; baseline `decisions.jsonl` and `execution.jsonl`.
+**Argument.** The immutable action envelope crosses one policy decision point and
+one execution gateway. Protected adapters require the gateway permit. Unknown,
+malformed, unscoped, expired, revoked, stopped, and prohibited requests have no
+execution transition.
 
-**Assumptions.** Host/process isolation and trusted code remain intact; the registry and policy have not been administratively replaced.
+**Evidence.** F1; P1 properties; architecture and gateway tests; EVAL-002/003/008/012;
+EXP-CN-001; proposal, decision, execution, and invariant records.
 
-## Claim C2 — the planner cannot grant itself authority
+## CN-C2 — approval is exact, fresh, and single-use
 
-**Argument.** The broker accepts only known issuer-created grants whose canonical payload matches the signed, stored artifact. Capabilities are non-delegable, scoped, expiring, revocable, and use-limited.
+**Claim.** Approval-required actions cannot execute without an independently issued
+approval bound to the exact request.
 
-**Evidence.** Capability unit tests; EVAL-003 and EVAL-008; property test for out-of-scope resources.
+**Argument.** Approval signs the request, mission, action, resource, controller,
+parameter digest, and validity window. The verifier rejects forgery, mutation,
+expiry, replay, and wrong controller.
 
-**Assumptions.** The HMAC key remains unavailable to the untrusted layer.
+**Evidence.** F2/F7; approval unit/property tests; EVAL-007/011/012; approval and
+invariant evidence streams.
 
-## Claim C3 — human approval is bound to one exact request
+## CN-C3 — emergency stop preserves human control
 
-**Argument.** Approval signs the request binding, including request, mission, action, resource, controller, and parameter hash; approval is expiring and single-use.
+**Claim.** Engaging emergency stop prevents consequential execution.
 
-**Evidence.** Approval unit tests and EVAL-007.
+**Argument.** Only an active registered human may engage or release stop. Policy
+returns `NULL` for actions above T0 while engaged; formal transitions also admit
+stop engagement after request creation.
 
-**Assumptions.** The operator identity and approval issuer are authentic.
+**Evidence.** F3; emergency-stop unit/property tests; EVAL-009; zero emergency-stop
+executions in independently reproduced metrics.
 
-## Claim C4 — emergency stop preserves human sovereignty
+## CN-C4 — the agent cannot expand its own authority
 
-**Argument.** An engaged stop returns `NULL` for every action above T0. Only an active human identity can release it.
+**Claim.** The planner cannot mint or broaden executable capability.
 
-**Evidence.** Emergency-stop unit/property tests and EVAL-009.
+**Argument.** Only stored issuer-created grants whose signed canonical payload
+matches the presented token become active. Grants are non-delegable, scoped,
+expiring, revocable, and use-limited.
 
-## Conditional top-level claim
+**Evidence.** F4; capability unit/property tests; EVAL-003/008/012; F1 negative
+formal mutation.
 
-Under the v0.1 threat model, code and policy configuration, deterministic synthetic agents, and EVAL-001–EVAL-012, the committed baseline observed no prohibited action crossing the CERBERUS NULL execution boundary. This is bounded empirical evidence, not a universal safety proof.
+## CN-C5 — T4 has no autonomous path
+
+**Claim.** T4 actions cannot execute autonomously under v0.1 policy.
+
+**Argument.** Every T4 registry entry is non-autonomous and deterministic policy
+returns `NULL` before capability or model confidence can establish a path.
+
+**Evidence.** F5; T4 registry/architecture tests; Hypothesis T4 properties;
+EVAL-010/012; 6/6 T4 containment in the canonical evidence.
+
+## Assumptions and confidence boundary
+
+The host, runtime, signing key, identity and mission stores, registry, policy,
+gateway, adapters, emergency stop, and evidence recorder remain trustworthy. The
+TLA+ model is finite and does not prove Python equivalence. The adversarial suite
+is synthetic and finite. Therefore the supported conclusion is:
+
+> The bounded authorization model satisfies F1–F7 over all reachable modeled
+> states, and no tested unauthorized request crossed the protected implementation
+> boundary under EXP-CN-001 and EVAL-001–012.
+
+This is not a claim of universal agent safety.

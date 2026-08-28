@@ -1,0 +1,15 @@
+{
+  "issuance": "per-request synthetic fixture",
+  "issuer": "human-operator-01",
+  "properties": [
+    "signed",
+    "subject-bound",
+    "mission-bound",
+    "action-bound",
+    "resource-scoped",
+    "expiring",
+    "revocable",
+    "use-limited",
+    "non-delegable"
+  ]
+}

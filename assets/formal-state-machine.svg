@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">CERBERUS NULL authorization state machine</title>
+  <desc id="desc">Requests pass through validation and authorization before execution. Denied, null, expired, stopped, and T4 paths cannot execute.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6f88a8"/></marker>
+    <style>.label{font-family:Inter,Arial,sans-serif;fill:#f5f8ff}.muted{font-family:Inter,Arial,sans-serif;fill:#8fa5c0}.node{fill:#142236;stroke:#4f78a8;stroke-width:2}.allow{fill:#10382e;stroke:#3ee2ae;stroke-width:2}.block{fill:#351b29;stroke:#ff6f88;stroke-width:2}.edge{stroke:#6f88a8;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1200" height="720" rx="28" fill="#07111f"/>
+  <text x="60" y="66" class="label" font-size="32" font-weight="700">Bounded Authorization State Machine</text>
+  <text x="60" y="99" class="muted" font-size="17">Every protected operation is revalidated; blocked states have no execution transition.</text>
+  <rect x="80" y="155" width="210" height="82" rx="16" class="node"/><text x="185" y="205" text-anchor="middle" class="label" font-size="21">REQUESTED</text>
+  <rect x="385" y="155" width="210" height="82" rx="16" class="node"/><text x="490" y="205" text-anchor="middle" class="label" font-size="21">VALIDATED</text>
+  <rect x="690" y="155" width="210" height="82" rx="16" class="node"/><text x="795" y="205" text-anchor="middle" class="label" font-size="21">AUTHORIZED</text>
+  <rect x="940" y="155" width="190" height="82" rx="16" class="allow"/><text x="1035" y="205" text-anchor="middle" class="label" font-size="21">EXECUTED</text>
+  <path d="M290 196 H377" class="edge"/><path d="M595 196 H682" class="edge"/><path d="M900 196 H932" class="edge"/>
+  <text x="642" y="178" text-anchor="middle" class="muted" font-size="14">capability · mission · policy</text>
+  <text x="920" y="145" text-anchor="middle" class="muted" font-size="14">approval · stop recheck · audit</text>
+  <rect x="210" y="355" width="220" height="82" rx="16" class="block"/><text x="320" y="405" text-anchor="middle" class="label" font-size="21">DENIED</text>
+  <rect x="490" y="355" width="220" height="82" rx="16" class="block"/><text x="600" y="405" text-anchor="middle" class="label" font-size="21">NULLIFIED</text>
+  <rect x="770" y="355" width="220" height="82" rx="16" class="node"/><text x="880" y="390" text-anchor="middle" class="label" font-size="20">APPROVAL</text><text x="880" y="416" text-anchor="middle" class="muted" font-size="15">PENDING</text>
+  <path d="M490 237 C490 290 320 290 320 347" class="edge"/><path d="M520 237 C520 290 600 290 600 347" class="edge"/><path d="M795 237 C795 290 880 290 880 347" class="edge"/><path d="M880 355 C880 300 820 290 820 245" class="edge"/>
+  <text x="60" y="518" class="label" font-size="20" font-weight="700">Forbidden transitions</text>
+  <text x="60" y="558" class="muted" font-size="17">DENIED → EXECUTED · NULLIFIED → EXECUTED · expired or mismatched approval → EXECUTED</text>
+  <text x="60" y="590" class="muted" font-size="17">no capability → EXECUTED · emergency stop → consequential execution · autonomous T4 → EXECUTED</text>
+  <line x1="60" y1="632" x2="1140" y2="632" stroke="#24374e"/>
+  <text x="60" y="675" class="muted" font-size="15">TLC checks F1–F7 across every reachable state in the committed finite model.</text>
+</svg>

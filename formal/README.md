@@ -1,14 +1,24 @@
-# Formal assurance roadmap
+# Formal assurance core
 
-CERBERUS NULL v0.1 is not formally verified. Its explicit state and four decision outcomes are designed for a future PlusCal/TLA+ model.
+`CerberusNull.tla` specifies the bounded authorization state machine behind the
+Python gateway. TLC exhaustively checks F1-F7 under `CerberusNull.cfg`; the v0.1
+release claim is centered on F1-F5.
 
-Priority temporal properties:
+Run from a clean clone:
 
-1. `T4(action) => [](~Executed(action))`
-2. `RequiresApproval(action) /\ ~ValidApproval(action) => [](~Executed(action))`
-3. `EmergencyStop => [](~Executed(tier > T0))`
-4. `Agent(subject) => [](~SelfIssuedCapability(subject))`
-5. `Expired(capability) => [](~Authorizes(capability))`
-6. `Decision \in {DENY, NULL, REQUIRE_APPROVAL} => [](~Executed(request))`
+```bash
+make formal
+```
 
-The model should distinguish evaluation time, capability consumption, approval replay state, audit precommit, execution, and audit completion. Refinement mapping to the Python implementation and TLC counterexample regression tests are the next assurance milestone.
+The script downloads the pinned TLA+ tools JAR, verifies its SHA-256 digest,
+runs TLC with one worker, preserves the raw positive trace, and runs a known-broken
+authorization mutation that must produce an F1 counterexample. Results are written
+to `formal/results/`.
+
+The model is deliberately finite: one agent, one human issuer, four abstract
+action classes, two resources, two capability issuers, four approval states, and
+a Boolean emergency stop. It includes malicious requests, agent-issued capability
+presentations, invalid approvals, revocation, and stop engagement after a request.
+
+Formal model checking is one evidence layer. See
+`docs/formal-implementation-map.md` for implementation and test traceability.

@@ -35,6 +35,12 @@ class ExecutionGateway:
         self._capabilities = capabilities
         self._approvals = approvals
         self._evidence = evidence
+        self._audit_log: list[dict[str, Any]] = []
+
+    @property
+    def audit_log(self) -> tuple[dict[str, Any], ...]:
+        """Return the immutable view used to prove authorization precommit."""
+        return tuple(self._audit_log)
 
     def process(
         self,
@@ -47,7 +53,16 @@ class ExecutionGateway:
         authorization = self._policy.decide(
             envelope, provenance=provenance, approval=approval, now=now
         )
-        audit_complete = False
+        audit_event = {
+            "request_id": envelope.request_id,
+            "request_hash": envelope.request_hash,
+            "decision": authorization.decision,
+            "reason_code": authorization.reason_code,
+            "policy_version": authorization.policy_version,
+            "policy_hash": authorization.policy_hash,
+        }
+        self._audit_log.append(audit_event)
+        audit_complete = True
         if self._evidence is not None:
             self._evidence.append(
                 "proposals.jsonl",
@@ -61,12 +76,11 @@ class ExecutionGateway:
             if approval is not None:
                 self._evidence.append("approvals.jsonl", approval.model_dump(mode="json"))
             self._evidence.append("decisions.jsonl", authorization.model_dump(mode="json"))
-            audit_complete = True
 
         if authorization.decision is not Decision.ALLOW:
             if self._evidence is not None:
                 self._evidence.append(
-                    "execution.jsonl",
+                    "executions.jsonl",
                     {
                         "request_id": envelope.request_id,
                         "request_hash": envelope.request_hash,
@@ -100,7 +114,7 @@ class ExecutionGateway:
             self._approvals.consume(approval.approval_id)
         if self._evidence is not None:
             self._evidence.append(
-                "execution.jsonl",
+                "executions.jsonl",
                 {
                     "request_id": envelope.request_id,
                     "request_hash": envelope.request_hash,

@@ -1,9 +1,0 @@
-{
-  "agent_model": "mock-deterministic-v1/mock-compromised-v1",
-  "autonomy_level": "A3",
-  "environment": "synthetic-local",
-  "network": "none",
-  "policy_bundle_hash": "fbfb3d69b7dcd75e6e575455f77789dae0c65cb764ab5debc247cca60b79a998",
-  "seed": 0,
-  "version": "0.1.0"
-}

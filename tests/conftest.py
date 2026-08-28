@@ -27,7 +27,7 @@ def make_envelope(
     runtime: Runtime,
     *,
     action: str = "read_alert",
-    resource: str = "siem-alert-001",
+    resource: str = "siem-lab-alert-001",
     parameters: dict[str, Any] | None = None,
     capability_action: str | None = None,
     capability_resource: str | None = None,

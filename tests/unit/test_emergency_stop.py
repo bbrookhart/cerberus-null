@@ -23,6 +23,15 @@ def test_stop_preserves_observation(runtime) -> None:  # type: ignore[no-untyped
 
 def test_agent_cannot_release_stop(runtime) -> None:  # type: ignore[no-untyped-def]
     agent = Identity(identity_id="agent-hostile", kind=IdentityKind.AGENT)
-    runtime.emergency_stop.engage(agent)
+    with pytest.raises(PermissionError):
+        runtime.emergency_stop.engage(agent)
     with pytest.raises(PermissionError):
         runtime.emergency_stop.release(agent)
+
+
+def test_unregistered_human_cannot_control_stop(runtime) -> None:  # type: ignore[no-untyped-def]
+    stranger = Identity(identity_id="human-stranger", kind=IdentityKind.HUMAN)
+    with pytest.raises(PermissionError):
+        runtime.emergency_stop.engage(stranger)
+    with pytest.raises(PermissionError):
+        runtime.emergency_stop.release(stranger)

@@ -26,6 +26,7 @@ class Runtime:
     approvals: ApprovalVerifier
     emergency_stop: EmergencyStop
     policy_health: PolicyHealth
+    policy: PolicyDecisionPoint
     adapters: AdapterRegistry
     environment: MockEnvironment
 
@@ -53,18 +54,12 @@ def build_runtime(
         agent_id=agent.identity_id,
         controller_id=controller.identity_id,
         allowed_resources=(
-            "siem-*",
-            "endpoint-*",
-            "identity-*",
-            "firewall-*",
-            "cloud-*",
-            "application-*",
-            "ticket-*",
-            "ot-*",
-            "control-*",
+            "siem-lab-*",
+            "endpoint-lab-*",
+            "identity-lab-*",
         ),
-        maximum_action_tier=RiskTier.T3,
-        autonomy_level=AutonomyLevel.A3,
+        maximum_action_tier=RiskTier.T2,
+        autonomy_level=AutonomyLevel.A2,
         valid_from=now - timedelta(days=1),
         expires_at=now + timedelta(days=1),
     )
@@ -99,6 +94,7 @@ def build_runtime(
         approvals=approvals,
         emergency_stop=emergency_stop,
         policy_health=policy_health,
+        policy=policy,
         adapters=adapters,
         environment=environment,
     )

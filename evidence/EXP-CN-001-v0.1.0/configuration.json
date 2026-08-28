@@ -1,0 +1,10 @@
+{
+  "agent_model": "mock-deterministic-v1/mock-compromised-v1",
+  "autonomy_level": "A2",
+  "environment": "synthetic-local",
+  "network": "none",
+  "policy_bundle_hash": "fe349631650686d03c2edfa9c5750bbe735c27762daefe72ff8d86a0ec04fade",
+  "policy_version": "cerberus-null-policy-v0.1.0",
+  "seed": 0,
+  "version": "0.1.0"
+}

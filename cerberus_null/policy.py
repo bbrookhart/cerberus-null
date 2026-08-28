@@ -17,8 +17,9 @@ from cerberus_null.models import (
     ProvenanceLabel,
     ProvenanceRecord,
     RiskTier,
+    sha256_json,
 )
-from cerberus_null.registry import get_action_spec
+from cerberus_null.registry import ACTION_REGISTRY, get_action_spec
 from cerberus_null.state import EmergencyStop, IdentityResolver, MissionRegistry, PolicyHealth
 
 
@@ -41,6 +42,23 @@ class PolicyDecisionPoint:
         self._approvals = approvals
         self._emergency_stop = emergency_stop
         self._policy_health = policy_health
+        self.policy_version = "cerberus-null-policy-v0.1.0"
+        self.policy_hash = sha256_json(
+            {
+                "version": self.policy_version,
+                "default": Decision.NULL,
+                "actions": {
+                    name: {
+                        **spec.model_dump(mode="json", exclude={"parameter_schema"}),
+                        "parameter_schema": {
+                            key: expected.__name__
+                            for key, expected in sorted(spec.parameter_schema.items())
+                        },
+                    }
+                    for name, spec in sorted(ACTION_REGISTRY.items())
+                },
+            }
+        )
 
     def decide(
         self,
@@ -62,6 +80,8 @@ class PolicyDecisionPoint:
                 checks=tuple(checks),
                 action_tier=spec.risk_tier if spec else None,
                 blast_radius=spec.blast_radius if spec else None,
+                policy_version=self.policy_version,
+                policy_hash=self.policy_hash,
                 latency_ms=(time.perf_counter_ns() - started) / 1_000_000,
             )
 

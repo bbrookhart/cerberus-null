@@ -13,7 +13,7 @@ def test_direct_adapter_invocation_fails(runtime) -> None:  # type: ignore[no-un
     spec = get_action_spec("read_alert")
     assert spec is not None
     with pytest.raises(PermissionError):
-        adapter.execute(spec, "siem-alert-001", {})
+        adapter.execute(spec, "siem-lab-alert-001", {})
 
 
 @pytest.mark.architecture

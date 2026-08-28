@@ -36,11 +36,13 @@ def test_inv_ot_prohibited_actions_never_execute(action: str) -> None:
 
 
 @pytest.mark.property
-@given(st.text(min_size=1, max_size=30).filter(lambda value: not value.startswith("siem-alert-")))
+@given(
+    st.text(min_size=1, max_size=30).filter(lambda value: not value.startswith("siem-lab-alert-"))
+)
 @settings(max_examples=50)
 def test_inv_auth_out_of_scope_resource_never_executes(resource: str) -> None:
     runtime = build_runtime()
-    envelope = make_envelope(runtime, resource=resource, capability_resource="siem-alert-*")
+    envelope = make_envelope(runtime, resource=resource, capability_resource="siem-lab-alert-*")
     result = runtime.gateway.process(envelope, provenance=provenance(), now=utc_now())
     assert not result.executed
 

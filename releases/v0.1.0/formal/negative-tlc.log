@@ -1,0 +1,86 @@
+TLC2 Version 2026.08.21.155922 (rev: 9787e65)
+Warning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the "-XX:+UseParallelGC" property.
+(Use the -nowarning option to disable this warning.)
+Running breadth-first search Model-Checking with fp 31 and seed -2387544997995760935 with 1 worker on 8 cores with 3584MB heap and 64MB offheap memory [pid: 51] (Linux 6.18.35 amd64, Ubuntu 17.0.20 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file /workspace/scratch/8d91b8462454/cerberus-null/formal/CerberusNullBroken.tla
+Parsing file /workspace/scratch/8d91b8462454/cerberus-null/formal/CerberusNull.tla
+Parsing file /tmp/tlc-1405412535613662172/Naturals.tla (jar:file:/workspace/scratch/8d91b8462454/cerberus-null/.tools/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /tmp/tlc-1405412535613662172/TLC.tla (jar:file:/workspace/scratch/8d91b8462454/cerberus-null/.tools/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /tmp/tlc-1405412535613662172/Sequences.tla (jar:file:/workspace/scratch/8d91b8462454/cerberus-null/.tools/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /tmp/tlc-1405412535613662172/FiniteSets.tla (jar:file:/workspace/scratch/8d91b8462454/cerberus-null/.tools/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module CerberusNull
+Semantic processing of module CerberusNullBroken
+Linting of module CerberusNull
+Linting of module CerberusNullBroken
+Starting... (2026-08-27 22:28:01)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-08-27 22:28:02.
+Error: Invariant F1_UnauthorizedNeverExecutes is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ approvalState = "NONE"
+/\ decision = "NONE"
+/\ capabilityPresented = FALSE
+/\ auditRecorded = FALSE
+/\ requestState = "IDLE"
+/\ executed = FALSE
+/\ emergencyStop = FALSE
+/\ capabilityActive = FALSE
+/\ action = "none"
+/\ resource = "none"
+/\ approvalHash = "none"
+/\ requestHash = "none"
+/\ capabilityIssuer = "none"
+
+State 2: <Submit line 57, col 5 to line 75, col 33 of module CerberusNull>
+/\ approvalState = "NONE"
+/\ decision = "NONE"
+/\ capabilityPresented = FALSE
+/\ auditRecorded = FALSE
+/\ requestState = "REQUESTED"
+/\ executed = FALSE
+/\ emergencyStop = FALSE
+/\ capabilityActive = FALSE
+/\ action = "safe"
+/\ resource = "scope"
+/\ approvalHash = "none"
+/\ requestHash = "request-1"
+/\ capabilityIssuer = "human"
+
+State 3: <Validate line 78, col 5 to line 83, col 55 of module CerberusNull>
+/\ approvalState = "NONE"
+/\ decision = "NONE"
+/\ capabilityPresented = FALSE
+/\ auditRecorded = FALSE
+/\ requestState = "VALIDATED"
+/\ executed = FALSE
+/\ emergencyStop = FALSE
+/\ capabilityActive = FALSE
+/\ action = "safe"
+/\ resource = "scope"
+/\ approvalHash = "none"
+/\ requestHash = "request-1"
+/\ capabilityIssuer = "human"
+
+State 4: <UnsafeExecuteWithoutCapability line 177, col 5 to line 187, col 35 of module CerberusNull>
+/\ approvalState = "NONE"
+/\ decision = "ALLOW"
+/\ capabilityPresented = FALSE
+/\ auditRecorded = TRUE
+/\ requestState = "EXECUTED"
+/\ executed = TRUE
+/\ emergencyStop = FALSE
+/\ capabilityActive = FALSE
+/\ action = "safe"
+/\ resource = "scope"
+/\ approvalHash = "none"
+/\ requestHash = "request-1"
+/\ capabilityIssuer = "human"
+
+147 states generated, 147 distinct states found, 80 states left on queue.
+The depth of the complete state graph search is 4.
+Finished in 00s at (2026-08-27 22:28:02)

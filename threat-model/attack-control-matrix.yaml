@@ -35,4 +35,4 @@ matrix:
     boundary: execution_gateway
     controls: [complete_mediation, T4_null, closed_registry]
     test: EVAL-012
-    evidence: [proposals.jsonl, decisions.jsonl, execution.jsonl]
+    evidence: [proposals.jsonl, decisions.jsonl, executions.jsonl, invariants.jsonl]

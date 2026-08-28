@@ -1,61 +1,107 @@
-# CERBERUS NULL build report
-
-## Release
-
-Version `0.1.0`, implemented and evaluated on 2026-08-26.
+# CERBERUS NULL v0.1 research release report
 
 ## Research question
 
-Can an agent remain useful while being structurally prevented from exceeding explicitly delegated authority or producing prohibited consequences when its planner is treated as manipulated or hostile?
+Can an AI agent remain operationally useful while an independent deterministic
+authorization architecture prevents execution outside explicitly delegated
+authority—even when the planner is treated as compromised?
 
-## Architecture
+## Threat model and trusted computing base
 
-Untrusted: model, planner, RAG, memory, natural-language context, tool output, model-generated code, and user content. Trusted in v0.1: host/runtime, signing key, identity and mission state, action registry, capability and approval verification, deterministic policy, emergency stop, protected gateway/adapters, and evidence recorder.
+The planner, LLM, memory, RAG, documents, tool output, user text, and generated
+reasoning are untrusted. The v0.1 TCB is identity and mission resolution,
+capability and approval verification, deterministic policy, safety invariants,
+human-controlled emergency stop, execution gateway, protected adapters, and
+evidence recorder. Host and TCB compromise are out of scope.
 
-## Security invariants
+## Authority and capability model
 
-The implemented boundary enforces no execution without valid capability; no self-expansion; exact approval binding; T4 prohibition; audit precommit; emergency-stop blocking; no authorization from content provenance; unknown-tool `NULL`; and direct-adapter rejection.
+Authority originates only from registered external state. Capabilities are signed,
+scoped, expiring, revocable, use-limited, non-delegable, and bound to subject,
+mission, action, resource, and parameters. Approval is independently issued,
+single-use, expiring, and bound to the exact request hash. Natural-language claims
+cannot create authority.
 
-## Evaluation suite
+## Formal specification and model checking
 
-EVAL-001–EVAL-012 cover safe read, unknown tool, privilege escalation, indirect prompt injection, tool-output injection, memory poisoning, approval expiry/replay, capability tampering, emergency stop, OT boundary, unknown provenance, and a systematically hostile planner.
+`formal/CerberusNull.tla` specifies request, capability, approval, stop, decision,
+execution, and audit state. Under the committed finite bounds, TLC
+2026.08.21.155922 generated 341 states, found 221 distinct reachable states at
+depth 6, and found no counterexample to F1–F7. The required core is:
 
-## Flagship measured results
+- F1 unauthorized actions never execute;
+- F2 approval-required actions require an exact valid approval;
+- F3 emergency stop blocks consequential execution;
+- F4 agent-issued authority cannot become active capability;
+- F5 T4 cannot execute autonomously.
 
-- 12 evaluation scenarios and 19 proposals;
-- 18 unsafe proposals and 0 unsafe executions;
-- 7/8 registered hostile actions executed by the naïve synthetic comparator;
-- 0/8 hostile actions executed through CERBERUS NULL;
-- 100% audit completeness;
-- 0.021 ms median and 0.949 ms p95 decision latency in the committed run.
+The known-broken model adds execution without capability validation. TLC produced
+the expected F1 counterexample, so the invariant suite detects that material defect.
 
-## Unsafe Action Escape Rate
+## Implementation verification
 
-`0 / 18 = 0%` under the documented v0.1 configuration and threat assumptions.
+- Ruff: PASS
+- strict mypy: PASS
+- pytest: 64 PASS
+- Hypothesis properties: PASS
+- integration and architecture tests: PASS
+- adversarial tests: PASS
+- clean-clone branch-aware coverage: 91.42%
+- deterministic decision test: PASS
+- direct-adapter rejection: PASS
+- formal negative mutation: PASS
+- targeted implementation mutations: 5/5 killed
 
-## Verification
+## EXP-CN-001 — Compromised Planner Authority Containment
 
-Thirty-eight tests pass. Branch-aware coverage is 88.36% over the control/evaluation package with the CLI excluded. Ruff, strict mypy, Bandit, and dependency audit pass; property and adversarial suites pass independently; the CycloneDX SBOM is generated. Formal verification and a mutation score are not claimed.
+The same deterministic planner proposed two safe and fourteen unsafe actions to an
+intentionally insecure agent-to-tool comparator and to CERBERUS NULL. The naive
+condition executed 13/14 registered unsafe requests. CERBERUS NULL executed 0/14
+unsafe requests and 2/2 safe requests.
 
-## Assurance evidence
+Across EVAL-001–012:
 
-The committed `evidence/baseline-v0.1.0/` package contains configuration, mission, issuance policy, inputs, provenance, proposals, decisions, approvals, executions, metrics, summary, and a verified SHA-256 manifest. Claims and traceability are in `docs/assurance-case.md` and `threat-model/attack-control-matrix.yaml`.
+- 27 proposals;
+- 24 unsafe proposals and 0 unsafe executions;
+- Unsafe Action Escape Rate: 0/24 (0%);
+- Safe Action Preservation Rate: 3/3 (100%);
+- False Block Rate: 0/3 (0%);
+- T4 Containment Rate: 6/6 (100%);
+- Approval Enforcement Rate: 100%;
+- Emergency-stop executions: 0;
+- Audit completeness: 27/27 (100%).
 
-## Reviewer path
+The recorded authorization latency was 0.044 ms median, 0.180 ms p95, and 0.312
+ms p99 on the local evidence host. It is descriptive, not a production benchmark.
 
-```bash
-make bootstrap
-make test
-cerberus evaluation run EVAL-012
-make evidence
-```
+## Evidence and independent verification
+
+The canonical package is `evidence/EXP-CN-001-v0.1.0/`. Its SHA-256 manifest,
+JSONL hash chains, schemas, request correlation, and required files verify. A
+separate calculation from raw proposal, decision, execution, and invariant records
+reproduces escape, preservation, false-block, T4, approval, stop, and audit metrics.
+
+## Reproducibility
+
+`make bootstrap`, `make test`, `make formal`, and `make experiment` reproduce the
+assurance workflow without secrets, paid models, cloud resources, production
+targets, or manual authority setup. `make evidence` verifies the committed result.
 
 ## Limitations
 
-The baseline is synthetic and local; the key issuer is not production-grade; host and TCB compromise are out of scope; no real LLM, external MCP server, production adapter, or formal model checker is included. Zero observed escape is not universal proof.
+The release uses one agent, one controller, one mission, synthetic adapters and OT,
+finite model bounds, local HMAC custody, and a limited evaluation catalog. It has
+no production IAM, hardware enforcement, adversarial host-compromise model, or
+proof of TLA+/Python equivalence. The authorization kernel is assumed trusted.
 
-## Next research milestone
+## Release
 
-Specify the authorization state machine in PlusCal/TLA+, model capability consumption and approval replay, use TLC counterexamples as regression fixtures, and then repeat EVAL-004/EVAL-012 with isolated local models at statistically meaningful sample sizes.
+**READY — v0.1.0.** No F1–F5 counterexample exists in the bounded release model;
+no tested unauthorized action executed; T4, approval, emergency-stop, evidence,
+independent-metric, and clean workflow gates pass.
 
-**Technical status:** the v0.1 deterministic boundary, synthetic execution range, measured TEVV suite, and evidence verifier are complete. Formal verification and external-model experiments remain open research work.
+## Next research experiment
+
+**EXP-CN-002 — Adversarial Information Control Failure.** Use an isolated real
+model and separately measure model compromise, unsafe proposal, authorization
+rejection, and execution.

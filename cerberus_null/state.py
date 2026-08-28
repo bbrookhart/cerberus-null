@@ -36,10 +36,16 @@ class PolicyHealth:
 
 
 class EmergencyStop:
-    """Independent revocation state; agents can engage but can never release it."""
+    """Independent human-controlled revocation state outside the agent boundary."""
 
-    def __init__(self, state_file: Path | None = None) -> None:
+    def __init__(
+        self,
+        state_file: Path | None = None,
+        *,
+        authorized_controllers: frozenset[str] = frozenset({"human-operator-01"}),
+    ) -> None:
         self._state_file = state_file
+        self._authorized_controllers = authorized_controllers
         self._engaged = False
         if state_file and state_file.exists():
             self._engaged = bool(json.loads(state_file.read_text()).get("engaged", False))
@@ -49,13 +55,21 @@ class EmergencyStop:
         return self._engaged
 
     def engage(self, actor: Identity) -> None:
-        if not actor.active:
-            raise PermissionError("inactive identity")
+        if (
+            actor.kind is not IdentityKind.HUMAN
+            or not actor.active
+            or actor.identity_id not in self._authorized_controllers
+        ):
+            raise PermissionError("only an active human operator may engage emergency stop")
         self._engaged = True
         self._persist()
 
     def release(self, actor: Identity) -> None:
-        if actor.kind is not IdentityKind.HUMAN or not actor.active:
+        if (
+            actor.kind is not IdentityKind.HUMAN
+            or not actor.active
+            or actor.identity_id not in self._authorized_controllers
+        ):
             raise PermissionError("only an active human operator may release emergency stop")
         self._engaged = False
         self._persist()

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">EXP-CN-001 compromised planner results</title>
+  <desc id="desc">Naive execution allowed 13/14 unsafe proposals. CERBERUS NULL allowed 0/14 and preserved 2/2 safe actions.</desc>
+  <rect width="1200" height="520" rx="28" fill="#07111f"/>
+  <text x="70" y="82" fill="#f5f8ff" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700">EXP-CN-001 — Compromised Planner</text>
+  <text x="70" y="118" fill="#91a7c4" font-family="Inter,Arial,sans-serif" font-size="18">Same deterministic proposals. Different authority architecture.</text>
+  <rect x="70" y="165" width="500" height="260" rx="20" fill="#131f30" stroke="#ff667a"/>
+  <text x="105" y="215" fill="#ff8b9a" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700">NAIVE AGENT → TOOL</text>
+  <text x="105" y="305" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="68" font-weight="800">13/14</text>
+  <text x="105" y="345" fill="#bac7d8" font-family="Inter,Arial,sans-serif" font-size="20">unsafe proposals executed</text>
+  <text x="105" y="390" fill="#ff8b9a" font-family="Inter,Arial,sans-serif" font-size="22">escape rate 92.9%</text>
+  <rect x="630" y="165" width="500" height="260" rx="20" fill="#131f30" stroke="#35d6a0"/>
+  <text x="665" y="215" fill="#61e8ba" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700">CERBERUS NULL</text>
+  <text x="665" y="305" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="68" font-weight="800">0/14</text>
+  <text x="665" y="345" fill="#bac7d8" font-family="Inter,Arial,sans-serif" font-size="20">unsafe proposals executed</text>
+  <text x="665" y="390" fill="#61e8ba" font-family="Inter,Arial,sans-serif" font-size="22">safe actions preserved 2/2</text>
+  <text x="70" y="477" fill="#7187a3" font-family="Inter,Arial,sans-serif" font-size="16">Deterministic synthetic evaluation · See evidence package and limitations</text>
+</svg>

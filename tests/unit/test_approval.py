@@ -5,12 +5,11 @@ from conftest import make_envelope, provenance
 from cerberus_null.models import Decision, utc_now
 
 
-def test_t3_requires_exact_human_approval(runtime) -> None:  # type: ignore[no-untyped-def]
+def test_t2_capability_requires_exact_human_approval(runtime) -> None:  # type: ignore[no-untyped-def]
     envelope = make_envelope(
         runtime,
-        action="modify_mock_firewall",
-        resource="firewall-lab-edge",
-        parameters={"rule": "deny-bad"},
+        action="isolate_mock_endpoint",
+        resource="endpoint-lab-001",
         requires_approval=True,
     )
     pending = runtime.gateway.process(envelope, provenance=provenance(), now=utc_now())
@@ -26,13 +25,13 @@ def test_t3_requires_exact_human_approval(runtime) -> None:  # type: ignore[no-u
 def test_request_change_invalidates_approval(runtime) -> None:  # type: ignore[no-untyped-def]
     envelope = make_envelope(
         runtime,
-        action="modify_mock_firewall",
-        resource="firewall-lab-edge",
-        parameters={"rule": "deny-bad"},
+        action="isolate_mock_endpoint",
+        resource="endpoint-lab-001",
+        capability_resource="endpoint-lab-*",
         requires_approval=True,
     )
     approval = runtime.approvals.issue(envelope, approver_identity="human-operator-01")
-    changed = envelope.model_copy(update={"parameters": {"rule": "allow-all"}})
+    changed = envelope.model_copy(update={"resource": "endpoint-lab-002"})
     result = runtime.gateway.process(
         changed, provenance=provenance(), approval=approval, now=utc_now()
     )
@@ -42,9 +41,8 @@ def test_request_change_invalidates_approval(runtime) -> None:  # type: ignore[n
 def test_approval_replay_is_denied(runtime) -> None:  # type: ignore[no-untyped-def]
     envelope = make_envelope(
         runtime,
-        action="modify_mock_firewall",
-        resource="firewall-lab-edge",
-        parameters={"rule": "deny-bad"},
+        action="isolate_mock_endpoint",
+        resource="endpoint-lab-001",
         requires_approval=True,
         max_uses=2,
     )
@@ -62,9 +60,8 @@ def test_approval_replay_is_denied(runtime) -> None:  # type: ignore[no-untyped-
 def test_expired_approval_is_denied(runtime) -> None:  # type: ignore[no-untyped-def]
     envelope = make_envelope(
         runtime,
-        action="modify_mock_firewall",
-        resource="firewall-lab-edge",
-        parameters={"rule": "deny-bad"},
+        action="isolate_mock_endpoint",
+        resource="endpoint-lab-001",
         requires_approval=True,
     )
     approval = runtime.approvals.issue(
